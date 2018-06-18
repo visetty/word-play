@@ -1,13 +1,16 @@
 $(document).ready(function() {
   $("#blanks form").submit(function(event){
 
-    var textOneInput = $("input#textOne").val();
-    //console.log(textOneInput);
-    $("textOne").val('');
-    var r = /[,.!?\s]+/;
-    var resultArray = textOneInput.split(r);
-    console.log(resultArray);
-    //return resultArray;
+      var textOneInput = $("input#textOne").val();
+      //console.log(textOneInput);
+      $("textOne").val('');
+      var r = /[,.!?\s]+/;
+      var resultArray = textOneInput.split(r);
+      console.log(resultArray);
+      //return resultArray;
+      alert(resultArray);
+
+
       event.preventDefault();
   });
 });
