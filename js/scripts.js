@@ -1,29 +1,30 @@
 $(document).ready(function() {
   $("#blanks form").submit(function(event){
-
+      event.preventDefault();
       var textOneInput = $("input#textOne").val();
       //console.log(textOneInput);
       $("textOne").val('');
       var r = /[,.!?\s]+/;
-      var resultArray = textOneInput.split(r);
-      console.log(resultArray);
+      var resultArrays = textOneInput.split(r);
+      //console.log(resultArray);
       //return resultArray;
-      alert(resultArray);
+      //alert(resultArray);
+        resultArrays.forEach(function(resultArray){
+          $("#resultString").append("<li>" + resultArray + "</li>");
+        });
 
       var displayArray = [];
 
-      resultArray.forEach(function(rslt){
+      resultArrays.forEach(function(rslt){
         var x = rslt;
-        if (x.length > 2) {
+        if (x.length >= 3) {
           displayArray.push(x);
         }
-        //$("#list-item1").append("<li>" + listItem.toUpperCase() + "</li>");
       });
 
-      alert(displayArray);
-      $(".list").show();
 
-      event.preventDefault();
+
+
   });
 });
 
