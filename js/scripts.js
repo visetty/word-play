@@ -1,30 +1,43 @@
+//business logic
+
+var splitAndBuildFunction = function(inputText){
+
+  var r = /[,.!?\s]+/;
+  var resultArray = inputText.split(r);
+
+  var outputArray = [];
+
+  resultArray.forEach(function(rslt){
+    if (rslt.length > 2) {
+      outputArray.push(rslt);
+    }
+  });
+
+  outputArray.reverse();
+  return outputArray;
+};
+
+var contactTextFunction = function(inputArray){
+  var displayText = inputArray.toString();
+  return displayText;
+};
+
+//User-interface logic
+
 $(document).ready(function() {
   $("#blanks form").submit(function(event){
       event.preventDefault();
       var textOneInput = $("input#textOne").val();
-      //console.log(textOneInput);
-      $("textOne").val('');
-      var r = /[,.!?\s]+/;
-      var resultArrays = textOneInput.split(r);
-      //console.log(resultArray);
-      //return resultArray;
-      //alert(resultArray);
-        resultArrays.forEach(function(resultArray){
-          $("#resultString").append("<li>" + resultArray + "</li>");
-        });
+      $("#textOne").val('');
 
-      var displayArray = [];
+      var displayArray = splitAndBuildFunction(textOneInput);
+      var displayText = contactTextFunction(displayArray);
 
-      resultArrays.forEach(function(rslt){
-        var x = rslt;
-        if (x.length >= 3) {
-          displayArray.push(x);
-        }
+      $("#resultString").html('');
+      displayArray.forEach(function(item){
+        $("#resultString").append("<li>" + item + "</li>");
       });
-
-
-
-
+      $("#resultString").append("<li>" + displayText + "</li>");
   });
 });
 
