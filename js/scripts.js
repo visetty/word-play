@@ -26,9 +26,12 @@ var contactTextFunction = function(inputArray){
 
 $(document).ready(function() {
   $("#blanks form").submit(function(event){
-      event.preventDefault();
-      var textOneInput = $("input#textOne").val();
-      $("#textOne").val('');
+    event.preventDefault();
+    var textOneInput = $("input#textOne").val();
+    $("#textOne").val('');
+    if (textOneInput.length === 0 ) {
+      alert("Enter a valid Text");
+    } else {
 
       var displayArray = splitAndBuildFunction(textOneInput);
       var displayText = contactTextFunction(displayArray);
@@ -38,6 +41,7 @@ $(document).ready(function() {
         $("#resultString").append("<li>" + item + "</li>");
       });
       $("#resultString").append("<li>" + displayText + "</li>");
+    }
   });
 });
 
