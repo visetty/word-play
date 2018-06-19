@@ -10,6 +10,18 @@ $(document).ready(function() {
       //return resultArray;
       alert(resultArray);
 
+      var displayArray = [];
+
+      resultArray.forEach(function(rslt){
+        var x = rslt;
+        if (x.length > 2) {
+          displayArray.push(x);
+        }
+        //$("#list-item1").append("<li>" + listItem.toUpperCase() + "</li>");
+      });
+
+      alert(displayArray);
+      $(".list").show();
 
       event.preventDefault();
   });
